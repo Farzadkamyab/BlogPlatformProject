@@ -45,9 +45,9 @@
     <div class="container px-4 px-lg-5">
         <!--{{author}}-->
         <form class=" row gx-4 gx-lg-5 justify-content-center needs-validation" novalidate method="post"
-              action="{% url 'category_details' category.id %}">
-            {% csrf_token %}
-                {{ form.as_p}}
+                action="{% url 'category_details' category.id %}">
+                {% csrf_token %}
+                {{ form }}
                 <button class="btn btn-dark mt-2" type="submit">Submit form</button>
         </form>
     </div>
