@@ -7,5 +7,4 @@ class CreatePostForm(forms.ModelForm):
         fields = "__all__"
 
 class UpdateCommentForm(forms.Form):
-    author = forms.CharField(max_length = 20) 
     content = forms.CharField(max_length = 200)
