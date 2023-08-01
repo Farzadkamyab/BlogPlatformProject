@@ -2,7 +2,7 @@ from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Post, Category, Comment
 from users.models import Author
-
+from .forms import CreatePostForm, UpdateCommentForm
 
 # Create your views here.
 
@@ -18,8 +18,14 @@ def home(request):
 
 
 def post_list(request):
-    all_posts = Post.objects.all()
-    return render(request, "Blog/post_list.html", {"all_posts": all_posts})
+    if request.method == "POST":
+        pass
+    else:
+        all_posts = Post.objects.all()
+        context = {
+            "all_posts": all_posts, 
+            }
+        return render(request, "Blog/post_list.html", context)
 
 
 def post_details(request, pk):
@@ -57,5 +63,16 @@ def category_details(request, pk):
         category = Category.objects.get(id=pk)
         authors = Author.objects.all()
         posts = category.post_set.all()
+        form = CreatePostForm()
     return render(request, "Blog/category_details.html",
-                  {"category": category, 'posts': posts, 'authors': authors})
+                    {"category": category, 'posts': posts, 'authors': authors, "form": form})
+
+def update_comment(request):
+    if request.method == "POST":
+        pass
+    else:
+        form = UpdateCommentForm()
+        context = {
+            "form": form
+        }
+        return render(request, "Blog/Update_comment.html", context)
