@@ -1,0 +1,30 @@
+{%extends 'base.html'%}
+{% block title%}
+        <title>All Posts </title>
+{%endblock title%}
+{% block content%}
+        <!-- Post Content-->
+        <article class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <article class="mb-4">
+                        <div class="container px-4 px-lg-5">
+                        <form class=" row gx-4 gx-lg-5 justify-content-center needs-validation" novalidate method="post" action="">
+                            {% csrf_token %}
+                        <div class="col-md-4">
+                            {{ form }}
+                            <button class="btn btn-primary mt-5" type="submit">Submit form</button>
+                        </div>
+                        </form>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </article>
+<!-- Divider-->
+<!-- Form Comment -->
+
+
+
+{% endblock content%}
