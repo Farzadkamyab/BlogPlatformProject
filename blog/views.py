@@ -67,9 +67,13 @@ def category_details(request, pk):
     return render(request, "Blog/category_details.html",
                     {"category": category, 'posts': posts, 'authors': authors, "form": form})
 
-def update_comment(request):
+def update_comment(request, pk):
     if request.method == "POST":
-        pass
+        form = UpdateCommentForm(request.POST)
+        if form.is_valid():
+            content = form.cleaned_data['content']
+            post = get_object_or_404(Post, pk=pk)
+            
     else:
         form = UpdateCommentForm()
         context = {
